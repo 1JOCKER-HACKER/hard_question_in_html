@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+      <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+      <py-env>
+        - paths:
+          - /example.py
+      </py-env>
+    </head>
+
+  <body>
+    <h1><b>ROOT_EQUATION_SOLUTION</b></h1>
+  
+    <py-script>
+      
+  import math
+
+###########################################
+def float_range(A, L=None, D=None):
+    if L == None:         
+        L = A + 0.0
+        A = 0.0
+    if D == None:
+        D = 1.0
+    while True:
+        if D > 0 and A >= L:
+            break
+        elif D < 0 and A <= L:
+            break
+        yield ("%g" % A) # return float number
+        A = A + D
+###########################################
+'''
+√x + y = 7
+x + √y = 11
+-------------------
+x1 == root(x)  
+x2 == x 
+x3 == x of second eq
+-------------------
+y1 == root(y)  
+y2 == y  of second eq   
+y3 == y of first eq
+-------------------'''                 
+try:
+    print('____________________________________________________________')
+    print()  
+    print("DECLEMER ⚠️⚠️⚠️ THE PROGRAM DOESNT GIVE CORRECT VALUE OF X     AND Y IN DECIMAL TYPE QUESTION IT GIVE APPROX VALUE OF X ANDY. ")
+    print('____________________________________________________________')              
+    print()
+    sum1= float(input('√X + Y == '))
+    print()
+    sum2= float(input('X + √Y == '))
+    print ()
+except:
+    print ()
+    print( 'error (please enter only postive number)' )
+    print()
+    exit();
+
+try:       
+    a = math.sqrt(sum2)
+    b = math.sqrt(sum1)
+except:
+    print('error')   
+    exit 
+x1 = []
+x2 = []
+y1 = []
+y2 = []
+
+x3 = []
+y3 = []
+
+for i in float_range(0, a, 0.1):
+        x1.append(i)        
+#print(x1)
+#print()    
+            
+for i in float_range(0, b, 0.1):
+        y1.append(i)        
+#print(y1)        
+#print()
+
+for j in x1:
+    j = float(j)
+    j2 = math.pow(j,2)
+    x2.append(j2)
+#print(x2)    
+#print()
+
+for j2 in y1:
+    j2 = float(j2)
+    j3 = math.pow(j2,2)
+    y2.append(j3)
+#print()
+
+for k1 in y1:
+    k1 = float(k1)
+    t = sum2 - k1
+    x3.append(t)
+#print(x3)    
+#print()
+
+for k2 in x1:
+    k2 = float(k2)
+    t2 = sum1 - k2
+    y3.append(t2)
+#print(y3)    
+#print()
+
+def common_member(a, b):    
+    a_set = set(a)
+    b_set = set(b)
+    
+    if len(a_set.intersection(b_set)) > 0:
+        return(a_set.intersection(b_set))  
+    else:
+        return("NO SOLUTION")
+
+fx = common_member(x2, x3)
+fy = common_member(y2, y3)
+for fx1 in fx:
+    pass
+try:    
+    fy1 = sum1 - math.sqrt(fx1)
+except:
+    if sum1 == 0 and sum2 == 0:
+        print('X = 0 | Y = 0')
+        exit()
+    else:        
+        print('NO SOLUTION')
+        print ()
+        exit()
+
+
+fsx = int(math.sqrt(fx1))
+fsy = int(math.sqrt(fy1))
+
+if (fsx + fy1 == sum1)and(fx1+fsy == sum2):
+    print ('X = ',fx1,' | ','Y =',fy1 )
+    print()
+else:            
+    print('NO SOLUTION')
+    exit();    
+      
+
+    </py-script>
+    
+   
+    
+    
+  </body>
+</html> 
